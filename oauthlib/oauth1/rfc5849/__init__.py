@@ -60,7 +60,7 @@ class Client(object):
                  signature_type=SIGNATURE_TYPE_AUTH_HEADER,
                  rsa_key=None, verifier=None, realm=None,
                  encoding='utf-8', decoding=None,
-                 nonce=None, timestamp=None):
+                 nonce=None, timestamp=None, oauth_version='1.0'):
         """Create an OAuth 1 client.
 
         :param client_key: Client key (consumer key), mandatory.
@@ -100,6 +100,7 @@ class Client(object):
         self.decoding = encode(decoding)
         self.nonce = encode(nonce)
         self.timestamp = encode(timestamp)
+        self.version = oauth_version
 
         if self.signature_method == SIGNATURE_RSA and self.rsa_key is None:
             raise ValueError(
@@ -165,7 +166,7 @@ class Client(object):
         params = [
             ('oauth_nonce', nonce),
             ('oauth_timestamp', timestamp),
-            ('oauth_version', '1.0'),
+            ('oauth_version', self.version),
             ('oauth_signature_method', self.signature_method),
             ('oauth_consumer_key', self.client_key),
         ]
