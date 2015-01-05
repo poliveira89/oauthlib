@@ -124,6 +124,10 @@ class Client(object):
 
         .. _`section 3.4.1.2`: http://tools.ietf.org/html/rfc5849#section-3.4.1.2
         """
+        print '\n\n ### DEBUG MODE ### \n\n'
+        print request
+        print dir(request)
+
         if self.signature_method == SIGNATURE_PLAINTEXT:
             # fast-path
             return signature.sign_plaintext(self.client_secret,
@@ -158,6 +162,8 @@ class Client(object):
         sig = self.SIGNATURE_METHODS[self.signature_method](base_string, self)
 
         log.debug("Signature: {0}".format(sig))
+        print("Signature: {0}".format(sig))
+        print '\n\n\n'
         return sig
 
     def get_oauth_params(self, request):
