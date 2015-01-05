@@ -25,6 +25,7 @@ else:
 from oauthlib.common import Request, urlencode, generate_nonce
 from oauthlib.common import generate_timestamp, to_unicode
 from . import parameters, signature
+from traceback import print_stack
 
 SIGNATURE_HMAC = "HMAC-SHA1"
 SIGNATURE_RSA = "RSA-SHA1"
@@ -124,7 +125,9 @@ class Client(object):
 
         .. _`section 3.4.1.2`: http://tools.ietf.org/html/rfc5849#section-3.4.1.2
         """
-        print '\n\n ### DEBUG MODE ### \n\n'
+        print '\n\n\n ### DEBUG MODE - get_oauth_signature() ### \n'
+        print_stack()
+        print '\n---------------------------------------------------'
         print request
         print dir(request)
 
