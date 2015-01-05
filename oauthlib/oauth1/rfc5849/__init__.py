@@ -136,17 +136,21 @@ class Client(object):
             body=body,
             headers=headers)
         log.debug("Collected params: {0}".format(collected_params))
+        print("Collected params: {0}".format(collected_params))
 
         normalized_params = signature.normalize_parameters(collected_params)
         normalized_uri = signature.normalize_base_string_uri(uri,
                                                              headers.get('Host', None))
         log.debug("Normalized params: {0}".format(normalized_params))
         log.debug("Normalized URI: {0}".format(normalized_uri))
+        print("Normalized params: {0}".format(normalized_params))
+        print("Normalized URI: {0}".format(normalized_uri))
 
         base_string = signature.construct_base_string(request.http_method,
                                                       normalized_uri, normalized_params)
 
         log.debug("Base signing string: {0}".format(base_string))
+        print("Base signing string: {0}".format(base_string))
 
         if self.signature_method not in self.SIGNATURE_METHODS:
             raise ValueError('Invalid signature method.')
