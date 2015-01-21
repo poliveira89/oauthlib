@@ -125,11 +125,11 @@ class Client(object):
 
         .. _`section 3.4.1.2`: http://tools.ietf.org/html/rfc5849#section-3.4.1.2
         """
-        print '\n\n\n ### DEBUG MODE - get_oauth_signature() ### \n'
-        print_stack()
-        print '\n---------------------------------------------------'
-        print request
-        print dir(request)
+        #print '\n\n\n ### DEBUG MODE - get_oauth_signature() ### \n'
+        #print_stack()
+        #print '\n---------------------------------------------------'
+        #print request
+        #print dir(request)
 
         if self.signature_method == SIGNATURE_PLAINTEXT:
             # fast-path
